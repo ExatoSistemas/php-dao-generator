@@ -7,7 +7,7 @@
             "banco" => "mydb",
             "usuario" => "root",
             "senha" => "",
-            "path" => "",
+            "path" => "C:\\",
         )));
         fclose($json);
     }
@@ -91,7 +91,7 @@
                                     <div class="form-group row">
                                         <label for="path" class="col-sm-2 col-form-label">Caminho para o DAO</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="path" name="path" placeholder="Informe o caminho do diretório onde ficará o DAO" value="<?php echo $informacoesAcesso->path; ?>">
+                                            <input type="text" class="form-control" id="path" name="path" placeholder="Informe o caminho do diretório onde ficará o DAO (caso não informado, o padrão será 'C:\')" value="<?php echo $informacoesAcesso->path; ?>">
                                         </div>
                                     </div>
                                 </li>

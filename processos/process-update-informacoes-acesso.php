@@ -3,7 +3,7 @@
     $banco = trim($_POST['banco']);
     $usuario = trim($_POST['usuario']) == "" ? "root" : trim($_POST['usuario']);
     $senha = trim($_POST['senha']);
-    $path = trim($_POST['path']);
+    $path = trim($_POST['path']) == "" ? "C:\\" : trim($_POST['path']);
 
     $newJson = [
         "banco" => $banco,

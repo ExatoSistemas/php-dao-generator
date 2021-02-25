@@ -39,9 +39,15 @@
     </nav>
 
     <form action="">
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
                 <div class="col">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        O checkbox abaixo foi automaticamente marcado porquê o DAO principal não foi encontrado no diretório atual
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" name="" id="" value="">
@@ -53,12 +59,18 @@
             <hr>
             <div class="row">
                 <div class="col-12">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        As tabelas que ainda não possuem DAO foram marcadas automaticamente
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <p>Selecionar tabelas</p>
                 </div>
                 <?php
                 for ($i = 1; $i < 12; $i++) {
                 ?>
-                    <div class="col-3">
+                    <div class="col-2">
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" name="" id="" value="">
@@ -73,22 +85,23 @@
             <hr>
             <div class="row">
                 <div class="col">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        O checkbox abaixo foi automaticamente marcado porquê existem servers que ainda não foram criados
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Alguns servers existentes serão sobrepostos, todas as edições feitas serão perdidas
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" name="" id="" value="">
-                            Além do DAO genérico gerar um DAO para edições
+                            Além do DAO genérico gerar o server para edições personalizadas no DAO
                         </label>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <p>Caminho para o dao <a href="#" class="badge badge-secondary" data-toggle="modal" data-target="#infoPath">?</a></p>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="path" name="path" placeholder="Cole aqui o caminho para onde vai ficar o DAO">
                     </div>
                 </div>
             </div>
@@ -100,25 +113,6 @@
             </div>
         </div>
     </form>
-
-    <!-- Modal infoPath -->
-    <div class="modal fade" id="infoPath" tabindex="-1" role="dialog" aria-labelledby="infoPath" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Esse é o caminho absoluto para o diretório onde vai ficar o DAO</p>
-                    <img src="assets/images/caminho-exemplo.png" alt="" class="img-fluid">
-                    <p>Clique no caminho para selecionar, copie e cole no input abaixo</p>
-                    <img src="assets/images/caminho-exemplo-selecionado.png" alt="" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Optional JavaScript -->
     <script src="assets/js/functions.js"></script>
