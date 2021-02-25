@@ -7,6 +7,7 @@
             "banco" => "mydb",
             "usuario" => "root",
             "senha" => "",
+            "path" => "",
         )));
         fclose($json);
     }
@@ -83,6 +84,14 @@
                                         <label for="senha" class="col-sm-2 col-form-label">Senha <a href="#" class="badge badge-pill badge-secondary" id="passwordToggle" onclick="passwordHiddenAndShow('senha', 'passwordToggle')">O</a></label>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe o a senha de acesso" value="<?php echo $informacoesAcesso->senha; ?>">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-group row">
+                                        <label for="path" class="col-sm-2 col-form-label">Caminho para o DAO</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="path" name="path" placeholder="Informe o caminho do diretório onde ficará o DAO" value="<?php echo $informacoesAcesso->path; ?>">
                                         </div>
                                     </div>
                                 </li>
