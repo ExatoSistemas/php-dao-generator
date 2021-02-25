@@ -1,0 +1,13 @@
+.text-align-center{
+    text-align: center !important;
+}
+
+.list-group-item{
+    padding-bottom: 0px;
+}
+
+@media(min-width: 576px){
+    .col-form-label{
+        padding-left: 0px;
+    }
+}
