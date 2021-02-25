@@ -54,11 +54,11 @@
         <div class="row">
             <div class="col">
                 <h2>
-                    <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a data-toggle="collapse" href="#informacoes-acesso" role="button" aria-expanded="true" aria-controls="informacoes-acesso">
                         Dados de acesso
                     </a>
                 </h2>
-                <div class="collapse" id="collapseExample">
+                <div class="collapse show" id="informacoes-acesso">
                     <div class="card card-body">
                         <ul class="list-group list-group-flush">
                             <form action="processos/process-update-informacoes-acesso.php" method="post">
