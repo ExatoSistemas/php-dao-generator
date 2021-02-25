@@ -70,7 +70,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="form-group row">
-                                        <label for="senha" class="col-sm-2 col-form-label">Senha <a href="#" class="badge badge-pill badge-secondary" id="passwordToggle" onclick="passwordHiddenAndShow('senha', 'passwordToggle')">O</a></label>
+                                        <label for="senha" class="col-sm-2 col-form-label">Senha <a href="#" class="badge badge-pill badge-secondary" id="passwordToggle" onclick="passwordHiddenAndShow('senha', 'passwordToggle')"><i class="fas fa-eye"></i></a></label>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe o a senha de acesso" value="<?php echo $informacoesAcesso->senha; ?>">
                                         </div>
@@ -108,6 +108,7 @@
 
     <!-- Optional JavaScript -->
     <script src="assets/js/functions.js"></script>
+    <script src="assets/js/fontawesome.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
