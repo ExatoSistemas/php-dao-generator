@@ -1,3 +1,20 @@
+<?php
+    $informacoesAcessoJsonPath = 'informacoes-acesso.json';
+
+    if(!file_exists($informacoesAcessoJsonPath)){// Se informações-acesso.json não existir, cria um com as informações padrões
+        $json = fopen($informacoesAcessoJsonPath, 'w');
+        fwrite($json, json_encode(array(
+            "banco" => "mydb",
+            "usuario" => "root",
+            "senha" => "",
+        )));
+        fclose($json);
+    }
+
+    $informacoesAcesso = json_decode(file_get_contents($informacoesAcessoJsonPath));
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -44,12 +61,12 @@
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <ul class="list-group list-group-flush">
-                            <form action="">
+                            <form action="processos/process-update-informacoes-acesso.php" method="post">
                                 <li class="list-group-item">
                                     <div class="form-group row">
                                         <label for="banco" class="col-sm-2 col-form-label">Banco</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="banco" name="banco" placeholder="Informe o nome do banco">
+                                            <input type="text" class="form-control" id="banco" name="banco" placeholder="Informe o nome do banco" value="<?php echo $informacoesAcesso->banco; ?>">
                                         </div>
                                     </div>
                                 </li>
@@ -57,7 +74,7 @@
                                     <div class="form-group row">
                                         <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Informe o nome do usuário de acesso (caso não informado, o padrão será 'root')">
+                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Informe o nome do usuário de acesso (caso não informado, o padrão será 'root')" value="<?php echo $informacoesAcesso->usuario; ?>">
                                         </div>
                                     </div>
                                 </li>
@@ -65,7 +82,7 @@
                                     <div class="form-group row">
                                         <label for="senha" class="col-sm-2 col-form-label">Senha <a href="#" class="badge badge-pill badge-secondary" id="passwordToggle" onclick="passwordHiddenAndShow('senha', 'passwordToggle')">O</a></label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe o a senha de acesso (caso não informado o padrão será '')">
+                                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe o a senha de acesso" value="<?php echo $informacoesAcesso->senha; ?>">
                                         </div>
                                     </div>
                                 </li>
