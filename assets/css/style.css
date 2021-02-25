@@ -11,3 +11,12 @@
         padding-left: 0px;
     }
 }
+
+.modal-header{
+    border-bottom: none;
+}
+
+#infoPath p{
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
