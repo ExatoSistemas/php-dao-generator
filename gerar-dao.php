@@ -1,3 +1,8 @@
+<?php
+    if(!file_exists('informacoes-acesso.json')){
+        header('Location: index.php');
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 
