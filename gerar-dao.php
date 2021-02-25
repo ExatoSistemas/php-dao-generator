@@ -20,17 +20,6 @@
 </head>
 
 <body>
-
-    <div class="container my-4">
-        <div class="row">
-            <div class="col">
-                <h1 class="text-align-center">Gerar novo DAO</h1>
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Início</a></li>
