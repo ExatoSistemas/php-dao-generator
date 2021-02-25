@@ -2,6 +2,11 @@
     if(!file_exists('informacoes-acesso.json')){
         header('Location: index.php');
     }
+
+    require_once("classes/ConectaBd.php");
+
+    $conectaBd = new ConectaBD(file_get_contents("informacoes-acesso.json"));
+
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -27,7 +32,7 @@
         </ol>
     </nav>
 
-    <form action="">
+    <form action="processos/process-gerar-dao.php" method="post">
         <div class="container mb-5">
             <div class="row">
                 <div class="col">
@@ -39,7 +44,7 @@
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="" id="" value="">
+                            <input type="checkbox" class="form-check-input" name="gerarDaoPrincipal" id="gerarDaoPrincipal" value="gerarDaoPrincipal">
                             Gerar DAO principal
                         </label>
                     </div>
@@ -57,17 +62,18 @@
                     <p>Selecionar tabelas</p>
                 </div>
                 <?php
-                for ($i = 1; $i < 12; $i++) {
-                ?>
-                    <div class="col-2">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="" id="" value="">
-                                Tabela numero <?php echo $i; ?>
-                            </label>
-                        </div>
-                    </div>
-                <?php
+                $tables = $conectaBd->getAllTables();
+                $count = 1;
+                foreach($tables as $tbl) {
+                    echo '<div class="col-3">';
+                    echo '    <div class="form-check">';
+                    echo '        <label class="form-check-label">';
+                    echo '            <input type="checkbox" class="form-check-input" name="tbl'.$count.'" id="tbl'.$count.'" value="'.$tbl.'">';
+                    echo $tbl;
+                    echo '        </label>';
+                    echo '    </div>';
+                    echo '</div>';
+                    $count++;
                 }
                 ?>
             </div>
@@ -88,7 +94,7 @@
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="" id="" value="">
+                            <input type="checkbox" class="form-check-input" name="gerarServer" id="gerarServer" value="gerarServer">
                             Além do DAO genérico gerar o server para edições personalizadas no DAO
                         </label>
                     </div>
@@ -97,6 +103,7 @@
             <hr>
             <div class="row">
                 <div class="col">
+                    <input type="hidden" name="numTables" value="<?php echo count($conectaBd->getAllTables()); ?>">
                     <button type="submit" class="btn btn-primary">Gerar DAO</button>
                 </div>
             </div>
