@@ -81,13 +81,13 @@
             <div class="row">
                 <div class="col">
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        O checkbox abaixo foi automaticamente marcado porquê existem servers que ainda não foram criados
+                        O checkbox abaixo foi automaticamente marcado porquê existem services que ainda não foram criados
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Alguns servers existentes serão sobrepostos, todas as edições feitas serão perdidas
+                        Alguns services existentes serão sobrepostos, todas as edições feitas serão perdidas
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
