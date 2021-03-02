@@ -206,7 +206,6 @@
             } else {
                 hiddenAlertDanger()
             }
-            console.log("verificado")
         }
 
         verificarSobreposicaoServices()
