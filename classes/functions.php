@@ -98,8 +98,9 @@ function createServiceDao($path, $table){
 ?>';
 
     $arquivoPath = $path."\Dao".underlineToCamelUp($table)."Service.php";
-    if(file_exists($arquivoPath)) unlink($arquivoPath);
-    $arquivo = fopen($arquivoPath, "w");
-    fwrite($arquivo, $code);
-    fclose($arquivo);
+    if(!file_exists($arquivoPath)){
+        $arquivo = fopen($arquivoPath, "w");
+        fwrite($arquivo, $code);
+        fclose($arquivo);
+    }
 }

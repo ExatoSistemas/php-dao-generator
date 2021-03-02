@@ -3,7 +3,6 @@
     include_once("../classes/functions.php");
 
     $gerarDaoPrincipal = isset($_POST['gerarDaoPrincipal']);
-    $gerarService = isset($_POST['gerarService']);
     $numTables = $_POST['numTables'];
 
     $conectaBd = new ConectaBD(file_get_contents("..\informacoes-acesso.json"));
@@ -30,12 +29,10 @@
                 $conectaBd->getAllColumnsFromTable($currentTable)
             );
 
-            if($gerarService){
-                createServiceDao(
-                    $informacoesAcessoJson->path,
-                    $currentTable
-                );
-            }
+            createServiceDao(
+                $informacoesAcessoJson->path,
+                $currentTable
+            );
 
         }
     }
