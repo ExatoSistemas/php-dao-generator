@@ -1,18 +1,18 @@
 <?php
-    $informacoesAcessoJsonPath = 'informacoes-acesso.json';
+$informacoesAcessoJsonPath = 'informacoes-acesso.json';
 
-    if(!file_exists($informacoesAcessoJsonPath)){// Se informações-acesso.json não existir, cria um com as informações padrões
-        $json = fopen($informacoesAcessoJsonPath, 'w');
-        fwrite($json, json_encode(array(
-            "banco" => "mydb",
-            "usuario" => "root",
-            "senha" => "",
-            "path" => "C:\\",
-        )));
-        fclose($json);
-    }
+if (!file_exists($informacoesAcessoJsonPath)) { // Se informações-acesso.json não existir, cria um com as informações padrões
+    $json = fopen($informacoesAcessoJsonPath, 'w');
+    fwrite($json, json_encode(array(
+        "banco" => "mydb",
+        "usuario" => "root",
+        "senha" => "",
+        "path" => "C:\\",
+    )));
+    fclose($json);
+}
 
-    $informacoesAcesso = json_decode(file_get_contents($informacoesAcessoJsonPath));
+$informacoesAcesso = json_decode(file_get_contents($informacoesAcessoJsonPath));
 
 ?>
 

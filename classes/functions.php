@@ -103,5 +103,3 @@ function createServiceDao($path, $table){
     fwrite($arquivo, $code);
     fclose($arquivo);
 }
-
-?>
