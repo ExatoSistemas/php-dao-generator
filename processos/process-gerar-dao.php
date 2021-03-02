@@ -24,28 +24,18 @@
         if(isset($_POST['tbl'.$table])){
             $currentTable = $_POST['tbl'.$table];
 
-            //var_dump($conectaBd->getAllColumnsFromTable($currentTable));
-            //createDao($json->path, "bancoaew", "andrew", "123");
             createGenericDao(
                 $informacoesAcessoJson->path,
                 $currentTable,
                 $conectaBd->getAllColumnsFromTable($currentTable)
             );
 
-        }
-    }
-
-    // Gerar Services
-    for($table = 1; $table <= $numTables; $table++){
-        if(isset($_POST['tbl'.$table])){
-            $currentTable = $_POST['tbl'.$table];
-
-            //var_dump($conectaBd->getAllColumnsFromTable($currentTable));
-            //createDao($json->path, "bancoaew", "andrew", "123");
-            createServiceDao(
-                $informacoesAcessoJson->path,
-                $currentTable
-            );
+            if($gerarService){
+                createServiceDao(
+                    $informacoesAcessoJson->path,
+                    $currentTable
+                );
+            }
 
         }
     }
