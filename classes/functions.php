@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 
 /** Converte uma string que separa palavras_com_underline para o padrão camelCase com a primeira letra minuscula */
 function underlineToCamelDown($word){
@@ -31,6 +32,9 @@ function underlineToCamelUp($word){
 function createDao($path, $banco, $username, $senha, $hostname = "localhost"){
     $code =
 '<?php
+
+    // Data em que foi gerado: '.date('d/m/Y - H:i:s').'
+
     class Dao {
         private $conexao;
 
@@ -63,14 +67,77 @@ function createDao($path, $banco, $username, $senha, $hostname = "localhost"){
 function createGenericDao($path, $table, $columns){
     $code =
 '<?php
+
+    // Data em que foi gerado: '.date('d/m/Y - H:i:s').'
+
     require_once("Dao.php");
 
-    class Dao'.underlineToCamelUp($table).'Generic extends Dao{
-        private $cod;
-        private $name;
-        private $passWord;
+    class Dao'.underlineToCamelUp($table)."Generic extends Dao{\n\n";
 
-        // The functions
+    // Adiciona atributos
+    foreach($columns as $col){
+        $code .= '        private $'.underlineToCamelDown($col).";\n";
+    }
+
+    // Adiciona getters
+    $code .= "\n        /* Getters */\n";
+    foreach($columns as $col){
+        $code .= '        protected function get'.underlineToCamelUp($col).'(){ return $this->'.underlineToCamelDown($col)."; }\n";
+    }
+
+    // Adiciona setters
+    $code .= "\n        /* Setters */\n";
+    foreach($columns as $col){
+        $code .= '        protected function set'.underlineToCamelUp($col).'($param){ $this->'.underlineToCamelDown($col).' = $param; }'."\n";
+    }
+
+    // Adiciona finds
+    $code .= "\n        /* Finds */";
+    foreach($columns as $col){
+        $code .= '
+        public function findBy'.underlineToCamelUp($col).'($param){
+            $sql = $this->sql("SELECT * FROM '.$table.' WHERE '.$col.' = '."'".'$param'."'".'");
+            if($select = mysqli_fetch_array($sql)){
+                return ['."\n";
+
+
+                foreach($columns as $column){
+                    $code .= '                    "'.$column.'" => $select['."'".$column."'".'],'."\n";
+                }
+
+
+        $code .= '                ];
+            } else {
+                return false;
+            }
+        }
+        ';
+    }
+
+    // Adiciona FindAlls
+    $code .= "\n        /* FindAlls */";
+    foreach($columns as $col){
+        $code .= '
+        public function findAllBy'.underlineToCamelUp($col).'($param){
+            $sql = $this->sql("SELECT * FROM '.$table.' WHERE '.$col.' = '."'".'$param'."'".'");
+            $response = [];
+            while($select = mysqli_fetch_array($sql)){
+                array_push($response, ['."\n";
+
+                foreach($columns as $column){
+                    $code .= '                    "'.$column.'" => $select['."'".$column."'".'],'."\n";
+                }
+
+        $code .= '
+                ]);
+            }
+
+            return $response;
+        }
+        ';
+    }
+
+    $code .='
 
     }
 ?>';
@@ -85,14 +152,14 @@ function createGenericDao($path, $table, $columns){
 function createServiceDao($path, $table){
     $code =
 '<?php
-    require_once("Dao.php");
 
-    class Dao'.underlineToCamelUp($table).'Service extends Dao{
-        private $cod;
-        private $name;
-        private $passWord;
+    // Data em que foi gerado: '.date('d/m/Y - H:i:s').'
 
-        // The functions
+    require_once("Dao'.underlineToCamelUp($table).'Generic.php");
+
+    class Dao'.underlineToCamelUp($table).'Service extends Dao'.underlineToCamelUp($table).'Generic{
+
+        // Custom functions here
 
     }
 ?>';
